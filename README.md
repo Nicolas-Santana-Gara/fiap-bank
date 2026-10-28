@@ -70,6 +70,8 @@ presentation -> infrastructure -> application -> domain
   - `POST /api/credito/solicitar` (controller adaptador legado) → mesma regra do endpoint v1
 - `AuthController` (`/api/auth/login`, público) autentica contra a tabela `usuario` (senha com
   BCrypt) e devolve o JWT assinado.
+- CORS liberado para `http://localhost:*` (necessário para o app Angular, servido em outra porta,
+  conseguir chamar a API - sem isso o navegador bloqueia a resposta do preflight).
 
 ### Rodando localmente
 
