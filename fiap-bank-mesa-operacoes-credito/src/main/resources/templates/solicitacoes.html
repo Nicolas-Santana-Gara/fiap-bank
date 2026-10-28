@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Solicitações de Crédito · FIAP Bank</title>
+    <link rel="stylesheet" th:href="@{/css/mesa.css}">
+</head>
+<body>
+<header class="topbar">
+    <div class="brand">FIAP Bank <span>Mesa de Operações de Crédito</span></div>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Sair</button>
+    </form>
+</header>
+
+<main>
+    <h1>Propostas de crédito recebidas</h1>
+
+    <table class="solicitacoes" th:if="${not #lists.isEmpty(solicitacoes)}">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>CPF do cliente</th>
+            <th>Conta</th>
+            <th>Valor</th>
+            <th>Prazo</th>
+            <th>Finalidade</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="s : ${solicitacoes}">
+            <td th:text="${s.id}"></td>
+            <td th:text="${s.cpfCliente}"></td>
+            <td th:text="${s.numeroConta}"></td>
+            <td th:text="${'R$ ' + #numbers.formatDecimal(s.valor, 1, 2)}"></td>
+            <td th:text="${s.prazoMeses + 'x'}"></td>
+            <td th:text="${s.finalidade}"></td>
+            <td><span class="status" th:classappend="${s.status}" th:text="${s.status}"></span></td>
+            <td class="acoes">
+                <th:block th:if="${s.status == 'PENDENTE'}">
+                    <form th:action="@{/solicitacoes/{id}/aprovar(id=${s.id})}" method="post">
+                        <button type="submit" class="btn-aprovar">Aprovar</button>
+                    </form>
+                    <form th:action="@{/solicitacoes/{id}/reprovar(id=${s.id})}" method="post">
+                        <button type="submit" class="btn-reprovar">Reprovar</button>
+                    </form>
+                </th:block>
+                <span th:if="${s.status != 'PENDENTE'}" th:text="${'por ' + s.operadorResponsavel}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="vazio" th:if="${#lists.isEmpty(solicitacoes)}">
+        Nenhuma solicitação de crédito pendente no momento.
+    </div>
+</main>
+</body>
+</html>

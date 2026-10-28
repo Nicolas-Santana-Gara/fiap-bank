@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mesa de Operações de Crédito · FIAP Bank</title>
+    <link rel="stylesheet" th:href="@{/css/mesa.css}">
+</head>
+<body>
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="brand">FIAP Bank</div>
+        <div class="subtitle">Mesa de Operações de Crédito</div>
+
+        <form th:action="@{/login}" th:object="${loginForm}" method="post">
+            <label for="login">Usuário</label>
+            <input type="text" id="login" th:field="*{login}" autocomplete="username" required>
+
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" th:field="*{senha}" autocomplete="current-password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+
+        <p class="erro" th:if="${erro}" th:text="${erro}"></p>
+
+        <p class="hint">Acesso restrito a operadores e administradores da Plataforma de Crédito.</p>
+    </div>
+</div>
+</body>
+</html>
