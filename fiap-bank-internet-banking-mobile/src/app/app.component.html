@@ -1,0 +1,12 @@
+<div class="app-shell">
+  <header class="app-header" *ngIf="authService.estaAutenticado()">
+    <span class="brand">FIAP Bank</span>
+    <nav>
+      <a routerLink="/minhas-solicitacoes" routerLinkActive="ativo">Minhas propostas</a>
+      <a routerLink="/solicitar-credito" routerLinkActive="ativo">Solicitar crédito</a>
+    </nav>
+    <button type="button" (click)="sair()">Sair</button>
+  </header>
+
+  <router-outlet></router-outlet>
+</div>

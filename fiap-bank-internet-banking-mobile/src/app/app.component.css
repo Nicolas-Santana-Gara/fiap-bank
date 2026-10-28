@@ -1,0 +1,39 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: #fff;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 14px 20px;
+}
+
+.app-header .brand {
+  color: var(--fiap-pink);
+  font-weight: 700;
+}
+
+.app-header nav {
+  display: flex;
+  gap: 16px;
+  flex: 1;
+}
+
+.app-header nav a {
+  color: var(--fiap-gray);
+  text-decoration: none;
+  font-size: 0.88rem;
+}
+
+.app-header nav a.ativo {
+  color: var(--fiap-pink);
+  font-weight: 600;
+}
+
+.app-header button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 6px 14px;
+  cursor: pointer;
+  color: var(--fiap-gray);
+}

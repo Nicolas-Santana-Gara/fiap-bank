@@ -1,0 +1,26 @@
+<main class="pagina">
+  <div class="cabecalho">
+    <h1>Minhas propostas de crédito</h1>
+    <a routerLink="/solicitar-credito" class="botao-novo">+ Nova proposta</a>
+  </div>
+
+  <p *ngIf="carregando">Carregando...</p>
+  <p class="erro" *ngIf="erro">{{ erro }}</p>
+
+  <div class="lista" *ngIf="!carregando && solicitacoes.length > 0">
+    <div class="cartao" *ngFor="let s of solicitacoes">
+      <div class="linha-topo">
+        <span class="valor">R$ {{ s.valor | number: '1.2-2' }}</span>
+        <span class="status" [ngClass]="s.status">{{ s.status }}</span>
+      </div>
+      <div class="detalhes">
+        <span>{{ s.prazoMeses }}x · {{ s.finalidade }}</span>
+        <span>Conta {{ s.numeroConta }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="vazio" *ngIf="!carregando && solicitacoes.length === 0 && !erro">
+    Você ainda não possui propostas de crédito. <a routerLink="/solicitar-credito">Solicitar agora</a>.
+  </div>
+</main>

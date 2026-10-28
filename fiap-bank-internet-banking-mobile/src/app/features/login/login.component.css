@@ -1,0 +1,65 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 0px);
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  padding: 36px 40px;
+  width: 320px;
+}
+
+.brand {
+  color: var(--fiap-pink);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--fiap-gray);
+  margin-top: 14px;
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 22px;
+  padding: 10px;
+  background: var(--fiap-pink);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.erro {
+  margin-top: 14px;
+  color: #c0392b;
+  font-size: 0.85rem;
+}

@@ -1,0 +1,18 @@
+<div class="login-wrapper">
+  <form class="login-card" (ngSubmit)="entrar()" #form="ngForm">
+    <div class="brand">FIAP Bank</div>
+    <div class="subtitle">Internet Banking</div>
+
+    <label for="cpf">CPF</label>
+    <input id="cpf" name="cpf" [(ngModel)]="cpf" required maxlength="11" placeholder="Somente números">
+
+    <label for="senha">Senha</label>
+    <input id="senha" name="senha" type="password" [(ngModel)]="senha" required>
+
+    <button type="submit" [disabled]="form.invalid || carregando">
+      {{ carregando ? 'Entrando...' : 'Entrar' }}
+    </button>
+
+    <p class="erro" *ngIf="erro">{{ erro }}</p>
+  </form>
+</div>

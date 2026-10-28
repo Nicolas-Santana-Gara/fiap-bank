@@ -1,0 +1,24 @@
+<main class="pagina">
+  <h1>Solicitar crédito pessoal</h1>
+
+  <form class="form-card" (ngSubmit)="enviar()" #form="ngForm">
+    <label for="numeroConta">Número da conta</label>
+    <input id="numeroConta" name="numeroConta" [(ngModel)]="numeroConta" required>
+
+    <label for="valor">Valor solicitado (R$)</label>
+    <input id="valor" name="valor" type="number" min="1" step="0.01" [(ngModel)]="valor" required>
+
+    <label for="prazoMeses">Prazo (meses)</label>
+    <input id="prazoMeses" name="prazoMeses" type="number" min="1" max="96" [(ngModel)]="prazoMeses" required>
+
+    <label for="finalidade">Finalidade</label>
+    <input id="finalidade" name="finalidade" [(ngModel)]="finalidade" required placeholder="Ex: reforma, quitação de dívidas...">
+
+    <button type="submit" [disabled]="form.invalid || enviando">
+      {{ enviando ? 'Enviando...' : 'Enviar proposta' }}
+    </button>
+
+    <p class="erro" *ngIf="erro">{{ erro }}</p>
+    <p class="sucesso" *ngIf="sucesso">Proposta enviada com sucesso! Redirecionando...</p>
+  </form>
+</main>
